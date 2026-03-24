@@ -39,3 +39,14 @@ app.use('/user', userRouter)
 app.listen(port, () => {
   console.log(`Notre app Express écoute le port ${port}`)
 })
+
+
+/// Pour la todo dans l'API 
+// 1 - Créer les bonnes routes en passant par un autre fichier de router 
+// (ex : localhost:3000/todo) 
+// Actions : Affichage des todos / Ajout de todo / Modif / suppression 
+// 2 - Pour chacune des routes réaliser les opérations SQL nécessaires vers la BDD 
+// 3 - Bien communiquer vers le front en cas d'erreur / succès.
+
+// BDD
+// !! Il faudra aussi créer une table todo avec les colonnes adequatezs dans phpmyadmin
