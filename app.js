@@ -4,6 +4,9 @@ const express = require('express')
 // On require les cors qui vont nous permettre de configurer qui peut effectuer des requetes vers l'API
 const cors = require("cors")
 
+// Je recup mes routers qui contiennent les différentes routes 
+const userRouter = require("./routes/user")
+const indexRouter = require("./routes/index")
 
 //// CONFIGURATION API
 // On crée notre app express 
@@ -26,22 +29,10 @@ app.use(cors(corsOptions))
 app.use(express.json())
 
 
-
-//// ROUTES DE L'API
-// Une première route en GET
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-// Première route en POST -> Adapter pour le login en React donc renvoyer vers l'app React 
-// un message de confirmation si le body de la requete bien reçu
-app.post('/login', (req, res) => {
-    console.log(req.body)
-
-    let { email, password } = req.body
-
-    res.json({ email, password }).status(200)
-})
+//// ROUTES DE L'API (UTILISATION DES ROUTERS)
+// Utilisation du router qui regroupe l'ensemble des routes par contexte (contexte du user, de l'index en général etc)
+app.use('/', indexRouter)
+app.use('/user', userRouter)
 
 
 //// ECOUTE SUR LE PORT 3000
