@@ -7,6 +7,7 @@ const cors = require("cors")
 // Je recup mes routers qui contiennent les différentes routes 
 const userRouter = require("./routes/user")
 const indexRouter = require("./routes/index")
+const todoRouter = require("./routes/todo")
 
 //// CONFIGURATION API
 // On crée notre app express 
@@ -33,6 +34,7 @@ app.use(express.json())
 // Utilisation du router qui regroupe l'ensemble des routes par contexte (contexte du user, de l'index en général etc)
 app.use('/', indexRouter)
 app.use('/user', userRouter)
+app.use('/todo', todoRouter)
 
 
 //// ECOUTE SUR LE PORT 3000
