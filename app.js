@@ -1,4 +1,4 @@
-//// DIFFERE?TS REQUIRE 
+//// DIFFERENTS REQUIRE 
 // app.js -> Fichier d'entrée de notre API Express/Node
 const express = require('express')
 // On require les cors qui vont nous permettre de configurer qui peut effectuer des requetes vers l'API
@@ -26,15 +26,17 @@ app.use(cors(corsOptions))
 app.use(express.json())
 
 
+
 //// ROUTES DE L'API
 // Une première route en GET 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-// Une route /bonsoir qui nous envoir en réponse la string "bonsoir"
-app.get('/bonsoir', (req, res) => {
-    res.send("bonsoir")
+// Première route en POST 
+app.post('/login', (req, res) => {
+    console.log(req.body)
+    res.send(req.body)
 })
 
 
