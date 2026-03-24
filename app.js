@@ -28,15 +28,19 @@ app.use(express.json())
 
 
 //// ROUTES DE L'API
-// Une première route en GET 
+// Une première route en GET
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-// Première route en POST 
+// Première route en POST -> Adapter pour le login en React donc renvoyer vers l'app React 
+// un message de confirmation si le body de la requete bien reçu
 app.post('/login', (req, res) => {
     console.log(req.body)
-    res.send(req.body)
+
+    let { email, password } = req.body
+
+    res.json({ email, password }).status(200)
 })
 
 
