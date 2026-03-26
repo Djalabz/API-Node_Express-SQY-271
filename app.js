@@ -3,6 +3,8 @@
 const express = require('express')
 // On require les cors qui vont nous permettre de configurer qui peut effectuer des requetes vers l'API
 const cors = require("cors")
+const cookieParser = require('cookie-parser')
+
 
 // Je recup mes routers qui contiennent les différentes routes 
 const userRouter = require("./routes/user")
@@ -18,8 +20,9 @@ const port = 3000
 
 // Configuration des cors avec les options
 const corsOptions = {
-    origin: "*",
+    origin: "http://localhost:5173",
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization']
 } 
 
@@ -29,6 +32,8 @@ app.use(cors(corsOptions))
 // On convertit toutes nos données reçues via des requetes en JSON
 app.use(express.json())
 
+// On utilise cookie-parser pour accéder aux cookies entrants 
+app.use(cookieParser())
 
 //// ROUTES DE L'API (UTILISATION DES ROUTERS)
 // Utilisation du router qui regroupe l'ensemble des routes par contexte (contexte du user, de l'index en général etc)
