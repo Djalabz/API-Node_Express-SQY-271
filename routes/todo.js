@@ -38,14 +38,27 @@ router.post('/add', (req, res) => {
     })
 })
 
+// Supprimer une todo 
+router.delete('/delete', (req, res) => {
+    const { id } = req.body
+
+    let sql = "DELETE FROM todos WHERE id = ?"
+
+    db.query(sql, [id], (err, results) => {
+        if (err) {
+            console.log(err)
+            res.status(500).json("Erreur lors de la suppression d'une todo")
+        } else {
+            console.log(results)
+            res.status(200).json("Todo supprimée avec succès !")
+        }
+    })
+})
+
 // Modifier une todo
 // router.put('/update/:id', (req, res) => {
 
 // } )
 
-// Supprimer une todo 
-// router.delete('/delete/:id', (req, res) => {
-
-// })
 
 module.exports = router
