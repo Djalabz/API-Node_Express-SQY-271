@@ -62,7 +62,7 @@ router.post('/signup', (req, res) => {
             res.status(500).json("erreur lors du hash du mdp")
         } else {
             // Si le hash a fonctionné on fait notre req prpéparée
-            const sql = "INSERT INTO users(username, email, password) VALUES(?, ?, ?)"
+            const sql = "INSERT INTO users(email, username, password) VALUES(?, ?, ?)"
 
             // Execution de la requete
             db.query(sql, [email, username, hash], (error, results) => {
@@ -78,12 +78,17 @@ router.post('/signup', (req, res) => {
     })
 })
 
-
+// Route de test 
 router.get('/protected', checkJWT, (req, res) => {
-
     res.json("JWT valide !!")
-
 })
+
+
+// Route de suppression de la session 
+router.get('/logout', checkJWT, (req, res) => {
+    res.clearCookie("token").json("Token supprimé").status(200)
+})
+
 
 
 module.exports = router

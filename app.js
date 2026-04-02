@@ -5,7 +5,6 @@ const express = require('express')
 const cors = require("cors")
 const cookieParser = require('cookie-parser')
 
-
 // Je recup mes routers qui contiennent les différentes routes 
 const userRouter = require("./routes/user")
 const indexRouter = require("./routes/index")
@@ -40,6 +39,8 @@ app.use(cookieParser())
 app.use('/', indexRouter)
 app.use('/user', userRouter)
 app.use('/todo', todoRouter)
+
+
 
 
 //// ECOUTE SUR LE PORT 3000

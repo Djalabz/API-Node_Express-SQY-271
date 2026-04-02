@@ -11,7 +11,7 @@ const checkJWT = (req, res, next) => {
             res.status(403).json("token invalide...")
             res.redirect("/login")
         } else {
-            res.json("Check JWT validé on passe à la suite")
+            // res.json("Check JWT validé on passe à la suite")
             next()
         }
     })
